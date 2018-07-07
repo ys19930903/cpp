@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <list>
+#include <deque>
 using namespace std;
 
 bool find1(vector<int>::iterator a,vector<int>::iterator b,int c){
@@ -24,6 +25,8 @@ vector<int>::iterator find2(vector<int>::iterator a,vector<int>::iterator b,int 
 	}
 	return b;
 }
+
+
 int main(){
 	vector<int> vec{4,5,2,7,3,56,78,32,35,77,4};
 	int find_number = 1;
@@ -53,6 +56,20 @@ int main(){
 	}
 	for(it2;it2 != vec4.end();it2++){
 		cout<<*it2<<endl;
+	}
+
+	list<const char*> old_name;
+	vector<const char*> names;
+	names.assign(old_name.begin(),old_name.end());
+
+	deque<string> deque1;
+	string buf;
+	while(cin >> buf){
+		deque1.push_back(buf);
+	}
+	deque<string>::iterator deque1_it1 = deque1.begin();
+	for(deque1_it1;deque1_it1!=deque1.end();deque1_it1++){
+		cout << *deque1_it1 << endl;
 	}
 	return 0;
 }
