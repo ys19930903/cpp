@@ -27,7 +27,7 @@ vector<int>::iterator find2(vector<int>::iterator a,vector<int>::iterator b,int 
 	return b;
 }
 
-int dmain(){
+/*int dmain(){
 	vector<int> vec{4,5,2,7,3,56,78,32,35,77,4};
 	int find_number = 1;
 	if(find2(vec.begin(),vec.end(),find_number) != vec.end()){
@@ -72,7 +72,7 @@ int dmain(){
 		cout << *deque1_it1 << endl;
 	}
 	return 0;
-}
+}*/
 
 void func26(int ia[],int size){
 	vector<int> vec1(ia,ia+size);
@@ -164,7 +164,8 @@ void func44(string &s,string &oldval,string &newval){
 
 }
 
-int main1(){
+
+/*int main1(){
 	list<int> list1(5,7);
 	deque<int> deque1;
 	deque<int> deque2;
@@ -219,15 +220,126 @@ int main1(){
 	}
 	cout << endl;
 	return 0;
+}*/
+
+
+class Date{
+	public:
+		unsigned _year;
+		unsigned _month;
+		unsigned _day;
+		void _show(){
+			cout << _year << "年" << _month << "月" << _day << "日" << endl;
+		}
+
+		Date(string);
+
+};
+
+Date::Date(string s){
+	int flag = 0;
+	string number = "0123456789/";
+	string coma = ",";
+	string month;
+	unsigned pos,pos1,pos2,pos3;
+	unsigned _pos,_pos1;
+
+	if((pos = s.find_first_not_of(number)) ==  string::npos){
+		flag = 1;
+	}
+	cout << flag << "pos = " << pos << "string::npos = " << string::npos << endl;
+	if((pos = s.find_first_of(coma)) != string::npos){
+		flag = 2;
+	}
+	cout << flag << endl;
+	switch(flag){
+		case 1:
+			pos1 = 0;
+			pos1 = s.find_first_of("/",pos1);
+			_day = stoul(s.substr(0,pos1));
+			pos2 = ++pos1;
+			pos1 = s.find_first_of("/",pos1);
+			_month = stoul(s.substr(pos2,pos1));
+			pos3 = ++pos1;
+			_year = stoul(s.substr(pos3,s.size() - 1));
+			break;
+		case 2:
+			_pos;
+			_pos = s.find_first_of(number);
+			month = s.substr(0,_pos);
+			if(month == "January ") 	_month = 1;
+			if(month == "February ") 	_month = 2;
+			if(month == "March ") 		_month = 3;
+			if(month == "April ") 		_month = 4;
+			if(month == "May ") 		_month = 5;
+			if(month == "June ") 		_month = 6;
+			if(month == "July ") 		_month = 7;
+			if(month == "August ") 		_month = 8;
+			if(month == "September ") 	_month = 9;
+			if(month == "October ") 	_month = 10;
+			if(month == "November ") 	_month = 11;
+			if(month == "December ") 	_month = 12;
+
+			_pos1 = ++pos;
+			_pos = s.find_first_of(number,_pos);
+			_day = stoul(s.substr(_pos1 - 1,_pos));
+			_year = stoul(s.substr(_pos,s.size() - 1));
+			break;
+
+		case 0:
+			_pos;
+			_pos = s.find_first_of(number);
+			month = s.substr(0,_pos);
+			if(month == "January ") 	_month = 1;
+			if(month == "February ") 	_month = 2;
+			if(month == "March ") 		_month = 3;
+			if(month == "April ") 		_month = 4;
+			if(month == "May ") 		_month = 5;
+			if(month == "June ") 		_month = 6;
+			if(month == "July ") 		_month = 7;
+			if(month == "August ") 		_month = 8;
+			if(month == "September ") 	_month = 9;
+			if(month == "October ") 	_month = 10;
+			if(month == "November ") 	_month = 11;
+			if(month == "December ") 	_month = 12;
+			
+			_pos1 = ++_pos;
+			_pos = s.find_first_of(number,_pos);
+			_day = stoul(s.substr(_pos1-1,_pos));
+
+			_year = stoul(s.substr(_pos,s.size()-1));
+			break;
+		
+	}
 }
 
 int main(){
-	string s = "abcdefg";
+	/*string s = "abcdefg";
 	string oldval = "bc";
 	string newval = "asas";
 	//func43(s,oldval,newval);
 	func44(s,oldval,newval);
 	cout << s << endl;
-	system("pause");
+	system("pause");*/
+
+	/*string s = "ab2c3d7R4E6";
+	string number = "0123456789";
+	unsigned pos = 0;
+	while((pos = s.find_first_of(number,pos)) != string::npos){
+		cout << "在第" << pos + 1 << "个位置找到数字" << s[pos] << endl;
+		++pos;
+	}
+	pos = 0;
+	while((pos = s.find_first_not_of(number,pos)) != string::npos){
+		cout << "在第" << pos + 1 <<"个位置找到英文字母" << s[pos] << endl;
+		++pos;
+	}*/
+	string s = "23/07/2018";
+	Date _today(s);
+	_today._show();
+	/*Date _tomorrow("January 1,1995");
+	_tomorrow._show();
+	Date _2tomorrow("Jan 1 1995");
+	_2tomorrow._show();*/
 	return 0;
 }
